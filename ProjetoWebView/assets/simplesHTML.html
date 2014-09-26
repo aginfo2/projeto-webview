@@ -1,0 +1,52 @@
+<html>  
+ <head>  
+   <link rel="stylesheet" type="text/css" href="style.css"/>  
+   <script type="text/javascript"> 
+   
+     function metodoWebView(data){  
+		 var obj = eval ("(" + data + ")");  
+		 var html = "<p><b>Data received</b><br><br>"+  
+					"Nome: <span>"+obj.param_nome+"</span><br>"+  
+					"E-mail: <span >"+obj.param_email+"</span></p>";
+		   
+		 var div_resposta=document.getElementById("resposta");  
+		 div_resposta.innerHTML = html;  
+     }
+	 
+     function chamarActivity(){  
+		 var nome = document.getElementById("txt_nome").value;  
+		 var email = document.getElementById("txt_email").value;  
+		 var dataObj = new Object();  
+		 
+		 dataObj.param_nome = nome;
+		 dataObj.param_email = email;  
+		 
+		 var jsonObj = JSON.stringify(dataObj); 
+		 
+		 pocwebview.metodoActivity(jsonObj); 
+     }  
+   </script>  
+ </head>  
+ <body>  
+ <div id="resposta" ></div>  
+ <div>  
+   <form id="form1">  
+     <table width="100%" class="mytable">  
+       <tr>  
+         <td>Nome</td>  
+       </tr>  
+       <tr>  
+         <td><input type="text" id="txt_nome"></td>  
+       </tr>  
+       <tr>  
+         <td>E-mail</td>  
+       </tr>  
+       <tr>  
+         <td><input type="text" id="txt_email"></td>  
+       </tr>  
+     </table>  
+   </form>  
+ </div>  
+ <button onClick="chamarActivity()">Chamar Activity</button>  
+ </body>  
+ </html>  
